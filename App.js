@@ -8,19 +8,43 @@ export default function App() {
   const [result, setResult] = useState('');
 
   const handleAdicionar = () => {
-    setResult(parseFloat(value1) + parseFloat(value2));
+    if (value1 === '' || value2 === '') {
+      setResult('Por favor, informe ambos os valores.');
+    } else {
+      setResult(parseFloat(value1) + parseFloat(value2));
+    }
   };
 
   const handleSubtrair = () => {
-    setResult(parseFloat(value1) - parseFloat(value2));
+    if (value1 === '' || value2 === '') {
+      setResult('Por favor, informe ambos os valores.');
+    } else {
+      setResult(parseFloat(value1) - parseFloat(value2));
+    }
   };
 
   const handleMultiplicacao = () => {
-    setResult(parseFloat(value1) * parseFloat(value2));
+    if (value1 === '' || value2 === '') {
+      setResult('Por favor, informe ambos os valores.');
+    } else {
+      setResult(parseFloat(value1) * parseFloat(value2));
+    }
   };
 
   const handleDivisao = () => {
-    setResult(parseFloat(value1) / parseFloat(value2));
+    if (value1 === '' || value2 === '') {
+      setResult('Por favor, informe ambos os valores.');
+    } else {
+      setResult(parseFloat(value1) / parseFloat(value2));
+    }
+  };
+
+  const handleChangeValue1 = text => {
+    setValue1(text.replace(/[^0-9.]/g, ''));
+  };
+
+  const handleChangeValue2 = text => {
+    setValue2(text.replace(/[^0-9.]/g, ''));
   };
 
   return (
@@ -30,14 +54,14 @@ export default function App() {
         <TextInput
           label="Value 1"
           value={value1}
-          onChangeText={text => setValue1(text)}
+          onChangeText={handleChangeValue1}
           keyboardType="numeric"
           style={styles.input}
         />
         <TextInput
           label="Value 2"
           value={value2}
-          onChangeText={text => setValue2(text)}
+          onChangeText={handleChangeValue2}
           keyboardType="numeric"
           style={styles.input}
         />
